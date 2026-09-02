@@ -86,6 +86,19 @@ button {
   border-radius: 6px;
   cursor: pointer;
 }
+
+    .stars button {
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: #666;
+  padding: 4px;
+}
+
+.stars button.active {
+  color: gold;
+}
     
   </style>
 </head>
@@ -128,15 +141,18 @@ button {
   <h2>Review Chapter 7</h2>
 
   <div class="rating">
-    <label>Story</label>
-    <select id="story">
-      <option value="1">1 / 5</option>
-<option value="2">2 / 5</option>
-<option value="3">3 / 5</option>
-<option value="4">4 / 5</option>
-<option value="5">5 / 5</option>
-    </select>
+  <label>Story</label>
+
+  <div class="stars" data-rating-name="story">
+    <button type="button" onclick="setRating('story', 1)">★</button>
+    <button type="button" onclick="setRating('story', 2)">★</button>
+    <button type="button" onclick="setRating('story', 3)">★</button>
+    <button type="button" onclick="setRating('story', 4)">★</button>
+    <button type="button" onclick="setRating('story', 5)">★</button>
   </div>
+
+  <input type="hidden" id="story" value="5">
+</div>
 
   <div class="rating">
     <label>Art</label>
@@ -176,6 +192,24 @@ button {
     <textarea id="feedback" rows="6" placeholder="What did you think of this chapter?"></textarea>
   </div>
 
+    function setRating(name, value) {
+  document.getElementById(name).value = value;
+
+  const container = document.querySelector(
+    '.stars[data-rating-name="' + name + '"]'
+  );
+
+  const buttons = container.querySelectorAll("button");
+
+  buttons.forEach((button, index) => {
+    if (index < value) {
+      button.classList.add("active");
+    } else {
+      button.classList.remove("active");
+    }
+  });
+}
+      
   <button onclick="submitReview()">Submit Review</button>
 
 </div>
