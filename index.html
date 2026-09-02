@@ -20,6 +20,36 @@
       color: #cccccc;
     }
 
+    .chapters {
+  max-width: 600px;
+  margin: 20px auto 40px auto;
+}
+
+.chapter-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 22px;
+  margin: 10px 0;
+
+  background-color: #181818;
+  color: white;
+
+  border: 1px solid #333;
+  border-radius: 8px;
+
+  text-decoration: none;
+}
+
+.chapter-card:hover {
+  background-color: #252525;
+}
+
+.chapter-card span {
+  color: #aaa;
+}
+    
     .button {
       display: inline-block;
       margin-top: 20px;
@@ -38,7 +68,15 @@
 
   <p>This site is currently for early readers.</p>
 
-  <a class="button" href="reader.html">Read Manga</a>
+  <h2>Chapters</h2>
+
+<div class="chapters">
+  <a class="chapter-card" href="reader.html?chapter=7">
+    <strong>Chapter 7</strong>
+    <span>Gathering Storm</span>
+  </a>
+</div>
+  
   <a class="button" href="characters.html">Characters</a>
   <a class="button" href="world.html">World</a>
   <a class="button" href="powers.html">Powers</a>
