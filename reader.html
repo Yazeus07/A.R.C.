@@ -108,7 +108,7 @@ button {
   <div class="topbar">
   <a href="index.html">← Home</a>
 
-  <h1>Chapter 7 - Gathering Storm</h1>
+  <h1 id="chapter-title">Chapter 7</h1>
 
   <div class="chapter-nav">
     <span>← Previous Chapter</span>
@@ -138,7 +138,7 @@ button {
 
   <div class="review-box">
 
-  <h2>Review Chapter 7</h2>
+  <h2 id="review-title">Review Chapter 7</h2>
 
   <div class="rating">
   <label>Story</label>
@@ -222,6 +222,18 @@ button {
 <script>
   const params = new URLSearchParams(window.location.search);
 const chapterNumber = params.get("chapter") || "7";
+  const chapterTitles = {
+  "7": "Gathering Storm",
+  "8": "Beneath the Crown"
+};
+
+const chapterTitle = chapterTitles[chapterNumber] || "";
+
+document.getElementById("chapter-title").textContent =
+  "Chapter " + chapterNumber + (chapterTitle ? " - " + chapterTitle : "");
+
+document.getElementById("review-title").textContent =
+  "Review Chapter " + chapterNumber;
   window.setRating = function(name, value) {
   document.getElementById(name).value = value;
 
