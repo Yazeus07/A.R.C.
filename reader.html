@@ -201,11 +201,22 @@ button {
     <textarea id="feedback" rows="6" placeholder="What did you think of this chapter?"></textarea>
   </div>
 
-    
+  <div class="review-box">
+  <h2>Reader Ratings</h2>
+
+  <p>Story: <strong id="avg-story">—</strong> / 5</p>
+  <p>Art: <strong id="avg-art">—</strong> / 5</p>
+  <p>Characters: <strong id="avg-characters">—</strong> / 5</p>
+  <p>Worldbuilding: <strong id="avg-worldbuilding">—</strong> / 5</p>
+
+  <p id="review-count">No reviews yet</p>
+</div>  
       
   <button onclick="submitReview()">Submit Review</button>
 
 </div>
+
+  
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
