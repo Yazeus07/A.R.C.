@@ -208,11 +208,15 @@ button {
 <script>
   const params = new URLSearchParams(window.location.search);
 const chapterNumber = params.get("chapter") || "7";
-   const chapterPageCounts = {
-  "7": 18
+   
+  const chapters = {
+  "7": {
+    title: "Gathering Storm",
+    pages: 18
+  }
 };
 
-const pageCount = chapterPageCounts[chapterNumber] || 0;
+const pageCount = chapters[chapterNumber]?.pages || 0;
 
 const mangaPages = document.getElementById("manga-pages");
 
@@ -229,7 +233,7 @@ for (let i = 1; i <= pageCount; i++) {
   const chapterNum = parseInt(chapterNumber);
 
 // List every chapter that currently exists
-const availableChapters = [7];
+const availableChapters = Object.keys(chapters).map(Number);
 
 const currentIndex = availableChapters.indexOf(chapterNum);
 
@@ -258,12 +262,9 @@ if (
   nextLink.style.visibility = "hidden";
 }
   
-  const chapterTitles = {
-  "7": "Gathering Storm",
-  "8": "Beneath the Crown"
-};
 
-const chapterTitle = chapterTitles[chapterNumber] || "";
+
+const chapterTitle = chapters[chapterNumber]?.title || "";
 
 document.getElementById("chapter-title").textContent =
   "Chapter " + chapterNumber + (chapterTitle ? " - " + chapterTitle : "");
