@@ -111,25 +111,7 @@ button {
   <h1 id="chapter-title">Chapter 7</h1>
     
 <!--CHAPTER PAGES -->
-  const chapterPageCounts = {
-  "7": 18,
-  "8": 18 
-};
-
-const pageCount = chapterPageCounts[chapterNumber] || 0;
-
-const mangaPages = document.getElementById("manga-pages");
-
-for (let i = 1; i <= pageCount; i++) {
-  const img = document.createElement("img");
-
-  const pageNumber = String(i).padStart(2, "0");
-
-  img.className = "manga-page";
-  img.src = "chapter-" + chapterNumber.padStart(2, "0") + "-web/page-" + pageNumber + ".jpg";
-
-  mangaPages.appendChild(img);
-}
+ 
   
   <div class="chapter-nav">
   <a id="prev-chapter" href="#">← Previous Chapter</a>
@@ -226,6 +208,24 @@ for (let i = 1; i <= pageCount; i++) {
 <script>
   const params = new URLSearchParams(window.location.search);
 const chapterNumber = params.get("chapter") || "7";
+   const chapterPageCounts = {
+  "7": 18
+};
+
+const pageCount = chapterPageCounts[chapterNumber] || 0;
+
+const mangaPages = document.getElementById("manga-pages");
+
+for (let i = 1; i <= pageCount; i++) {
+  const img = document.createElement("img");
+
+  const pageNumber = String(i).padStart(2, "0");
+
+  img.className = "manga-page";
+  img.src = "chapter-" + chapterNumber.padStart(2, "0") + "-web/page-" + pageNumber + ".jpg";
+
+  mangaPages.appendChild(img);
+}
   const chapterNum = parseInt(chapterNumber);
 
 // List every chapter that currently exists
@@ -368,8 +368,9 @@ document.getElementById("review-title").textContent =
 if (localStorage.getItem("reviewed-chapter-" + chapterNumber) === "yes") {
   document.getElementById("submit-review-button").style.display = "none";
   document.getElementById("reader-ratings").style.display = "block";
-}
   loadRatings();
+}
+  
   
 </script>
 
