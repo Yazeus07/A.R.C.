@@ -228,19 +228,36 @@ for (let i = 1; i <= pageCount; i++) {
 const chapterNumber = params.get("chapter") || "7";
   const chapterNum = parseInt(chapterNumber);
 
+// List every chapter that currently exists
+const availableChapters = [7];
+
+const currentIndex = availableChapters.indexOf(chapterNum);
+
 document.getElementById("current-chapter").textContent =
   "Chapter " + chapterNumber;
 
 const prevLink = document.getElementById("prev-chapter");
 const nextLink = document.getElementById("next-chapter");
 
-if (chapterNum > 7) {
-  prevLink.href = "reader.html?chapter=" + (chapterNum - 1);
+// Previous Chapter
+if (currentIndex > 0) {
+  prevLink.href =
+    "reader.html?chapter=" + availableChapters[currentIndex - 1];
 } else {
   prevLink.style.visibility = "hidden";
 }
 
-nextLink.href = "reader.html?chapter=" + (chapterNum + 1);
+// Next Chapter
+if (
+  currentIndex !== -1 &&
+  currentIndex < availableChapters.length - 1
+) {
+  nextLink.href =
+    "reader.html?chapter=" + availableChapters[currentIndex + 1];
+} else {
+  nextLink.style.visibility = "hidden";
+}
+  
   const chapterTitles = {
   "7": "Gathering Storm",
   "8": "Beneath the Crown"
