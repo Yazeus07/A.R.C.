@@ -155,37 +155,46 @@ button {
 </div>
 
   <div class="rating">
-    <label>Art</label>
-    <select id="art">
-      <option value="1">1 / 5</option>
-<option value="2">2 / 5</option>
-<option value="3">3 / 5</option>
-<option value="4">4 / 5</option>
-<option value="5">5 / 5</option>
-    </select>
+  <label>Art</label>
+
+  <div class="stars" data-rating-name="art">
+    <button type="button" onclick="setRating('art', 1)">★</button>
+    <button type="button" onclick="setRating('art', 2)">★</button>
+    <button type="button" onclick="setRating('art', 3)">★</button>
+    <button type="button" onclick="setRating('art', 4)">★</button>
+    <button type="button" onclick="setRating('art', 5)">★</button>
   </div>
 
-  <div class="rating">
-    <label>Characters</label>
-    <select id="characters">
-      <option value="1">1 / 5</option>
-<option value="2">2 / 5</option>
-<option value="3">3 / 5</option>
-<option value="4">4 / 5</option>
-<option value="5">5 / 5</option>
-    </select>
-  </div>
+  <input type="hidden" id="art" value="5">
+</div>
 
   <div class="rating">
-    <label>Worldbuilding</label>
-    <select id="worldbuilding">
-      <option value="1">1 / 5</option>
-<option value="2">2 / 5</option>
-<option value="3">3 / 5</option>
-<option value="4">4 / 5</option>
-<option value="5">5 / 5</option>
-    </select>
+  <label>Characters</label>
+
+  <div class="stars" data-rating-name="characters">
+    <button type="button" onclick="setRating('characters', 1)">★</button>
+    <button type="button" onclick="setRating('characters', 2)">★</button>
+    <button type="button" onclick="setRating('characters', 3)">★</button>
+    <button type="button" onclick="setRating('characters', 4)">★</button>
+    <button type="button" onclick="setRating('characters', 5)">★</button>
   </div>
+
+  <input type="hidden" id="characters" value="5">
+</div>
+
+  <div class="rating">
+  <label>Worldbuilding</label>
+
+  <div class="stars" data-rating-name="worldbuilding">
+    <button type="button" onclick="setRating('worldbuilding', 1)">★</button>
+    <button type="button" onclick="setRating('worldbuilding', 2)">★</button>
+    <button type="button" onclick="setRating('worldbuilding', 3)">★</button>
+    <button type="button" onclick="setRating('worldbuilding', 4)">★</button>
+    <button type="button" onclick="setRating('worldbuilding', 5)">★</button>
+  </div>
+
+  <input type="hidden" id="worldbuilding" value="5">
+</div>
 
   <div class="rating">
     <label>Written feedback</label>
