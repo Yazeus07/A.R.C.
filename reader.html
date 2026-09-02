@@ -136,7 +136,7 @@ button {
   <img class="manga-page" src="chapter-07-web/page-17.jpg">
   <img class="manga-page" src="chapter-07-web/page-18.jpg">
 
-  <div class="review-box">
+  <div class="review-box" id="reader-ratings" style="display: none;">
 
   <h2>Review Chapter 7</h2>
 
@@ -309,6 +309,7 @@ button {
   console.error(error);
 } else {
       alert("Thank you! Your review was submitted.");
+      document.getElementById("reader-ratings").style.display = "block";
       loadRatings();
     }
   }
