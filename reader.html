@@ -234,7 +234,9 @@ for (let i = 1; i <= pageCount; i++) {
   const chapterNum = parseInt(chapterNumber);
 
 // List every chapter that currently exists
-const availableChapters = Object.keys(chapters).map(Number);
+const availableChapters = Object.keys(chapters)
+  .map(Number)
+  .sort((a, b) => a - b);
 
 const currentIndex = availableChapters.indexOf(chapterNum);
 
@@ -362,13 +364,13 @@ document.getElementById("review-title").textContent =
 } else {
       alert("Thank you! Your review was submitted.");
       localStorage.setItem("reviewed-chapter-" + chapterNumber, "yes");
-      document.getElementById("review-form").style.display = "none";
-      document.getElementById("reader-ratings").style.display = "block";
+       document.getElementById("review-form").style.display = "none";
+       document.getElementById("reader-ratings").style.display = "block";
       loadRatings();
     }
   }
 if (localStorage.getItem("reviewed-chapter-" + chapterNumber) === "yes") {
-  document.getElementById("submit-review-button").style.display = "none";
+  document.getElementById("review-form").style.display = "none";
   document.getElementById("reader-ratings").style.display = "block";
   loadRatings();
 }
