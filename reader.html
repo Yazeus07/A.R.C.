@@ -129,54 +129,54 @@ button {
 
   <div class="rating">
     <label>Story</label>
-    <select>
-      <option>1 / 5</option>
-      <option>2 / 5</option>
-      <option>3 / 5</option>
-      <option>4 / 5</option>
-      <option>5 / 5</option>
+    <select id="story">
+      <option value="1">1 / 5</option>
+<option value="2">2 / 5</option>
+<option value="3">3 / 5</option>
+<option value="4">4 / 5</option>
+<option value="5">5 / 5</option>
     </select>
   </div>
 
   <div class="rating">
     <label>Art</label>
-    <select>
-      <option>1 / 5</option>
-      <option>2 / 5</option>
-      <option>3 / 5</option>
-      <option>4 / 5</option>
-      <option>5 / 5</option>
+    <select id="art">
+      <option value="1">1 / 5</option>
+<option value="2">2 / 5</option>
+<option value="3">3 / 5</option>
+<option value="4">4 / 5</option>
+<option value="5">5 / 5</option>
     </select>
   </div>
 
   <div class="rating">
     <label>Characters</label>
-    <select>
-      <option>1 / 5</option>
-      <option>2 / 5</option>
-      <option>3 / 5</option>
-      <option>4 / 5</option>
-      <option>5 / 5</option>
+    <select id="characters">
+      <option value="1">1 / 5</option>
+<option value="2">2 / 5</option>
+<option value="3">3 / 5</option>
+<option value="4">4 / 5</option>
+<option value="5">5 / 5</option>
     </select>
   </div>
 
   <div class="rating">
     <label>Worldbuilding</label>
-    <select>
-      <option>1 / 5</option>
-      <option>2 / 5</option>
-      <option>3 / 5</option>
-      <option>4 / 5</option>
-      <option>5 / 5</option>
+    <select id="worldbuilding">
+      <option value="1">1 / 5</option>
+<option value="2">2 / 5</option>
+<option value="3">3 / 5</option>
+<option value="4">4 / 5</option>
+<option value="5">5 / 5</option>
     </select>
   </div>
 
   <div class="rating">
     <label>Written feedback</label>
-    <textarea rows="6" placeholder="What did you think of this chapter?"></textarea>
+    <textarea id="feedback" rows="6" placeholder="What did you think of this chapter?"></textarea>
   </div>
 
-  <button>Submit Review</button>
+  <button onclick="submitReview()">Submit Review</button>
 
 </div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -188,7 +188,26 @@ button {
   const supabaseClient = supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
-  );
+  );const { error } = await supabaseClient
+      .from("reviews")
+      .insert([
+        {
+          chapter: "7",
+          story: story,
+          art: art,
+          characters: characters,
+          worldbuilding: worldbuilding,
+          feedback: feedback
+        }
+      ]);
+
+    if (error) {
+      alert("Something went wrong. Please try again.");
+      console.error(error);
+    } else {
+      alert("Thank you! Your review was submitted.");
+    }
+  }
 </script>
 </body>
 </html>
