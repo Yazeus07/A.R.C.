@@ -75,7 +75,15 @@
   <a class="button" href="characters.html">Characters</a>
   <a class="button" href="world.html">World</a>
   <a class="button" href="powers.html">Powers</a>
-onst chapterList = document.getElementById("chapter-list");
+
+<script>
+  const chapters = {
+    "7": {
+      title: "Gathering Storm"
+    }
+  };
+
+  const chapterList = document.getElementById("chapter-list");
 
   Object.keys(chapters)
     .map(Number)
