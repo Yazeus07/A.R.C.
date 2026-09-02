@@ -13,8 +13,23 @@
     }
 
     .topbar {
-      padding: 20px;
-    }
+  position: sticky;
+  top: 0;
+  background-color: #111;
+  padding: 15px;
+  border-bottom: 1px solid #333;
+  z-index: 10;
+}
+
+.topbar h1 {
+  margin: 8px 0;
+  font-size: 24px;
+}
+
+.topbar p {
+  margin: 0;
+  color: #aaa;
+}
 
     .manga-page {
       display: block;
@@ -32,9 +47,10 @@
 <body>
 
   <div class="topbar">
-    <h1>Chapter 7 - Gathering Storm</h1>
-    <p><a href="index.html">Back to Home</a></p>
-  </div>
+  <a href="index.html">← Home</a>
+  <h1>Chapter 7 - Gathering Storm</h1>
+  <p>Issue #7</p>
+</div>
 
   <img class="manga-page" src="chapter-07-web/page-01.jpg">
   <img class="manga-page" src="chapter-07-web/page-02.jpg">
