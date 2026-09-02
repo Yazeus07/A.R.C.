@@ -109,7 +109,28 @@ button {
   <a href="index.html">← Home</a>
 
   <h1 id="chapter-title">Chapter 7</h1>
+    
+<!--CHAPTER PAGES -->
+  const chapterPageCounts = {
+  "7": 18,
+  "8": 18 
+};
 
+const pageCount = chapterPageCounts[chapterNumber] || 0;
+
+const mangaPages = document.getElementById("manga-pages");
+
+for (let i = 1; i <= pageCount; i++) {
+  const img = document.createElement("img");
+
+  const pageNumber = String(i).padStart(2, "0");
+
+  img.className = "manga-page";
+  img.src = "chapter-" + chapterNumber.padStart(2, "0") + "-web/page-" + pageNumber + ".jpg";
+
+  mangaPages.appendChild(img);
+}
+  
   <div class="chapter-nav">
     <span>← Previous Chapter</span>
     <span>Chapter 7</span>
@@ -117,24 +138,7 @@ button {
   </div>
 </div>
 
-  <img class="manga-page" src="chapter-07-web/page-01.jpg">
-  <img class="manga-page" src="chapter-07-web/page-02.jpg">
-  <img class="manga-page" src="chapter-07-web/page-03.jpg">
-  <img class="manga-page" src="chapter-07-web/page-04.jpg">
-  <img class="manga-page" src="chapter-07-web/page-05.jpg">
-  <img class="manga-page" src="chapter-07-web/page-06.jpg">
-  <img class="manga-page" src="chapter-07-web/page-07.jpg">
-  <img class="manga-page" src="chapter-07-web/page-08.jpg">
-  <img class="manga-page" src="chapter-07-web/page-09.jpg">
-  <img class="manga-page" src="chapter-07-web/page-10.jpg">
-  <img class="manga-page" src="chapter-07-web/page-11.jpg">
-  <img class="manga-page" src="chapter-07-web/page-12.jpg">
-  <img class="manga-page" src="chapter-07-web/page-13.jpg">
-  <img class="manga-page" src="chapter-07-web/page-14.jpg">
-  <img class="manga-page" src="chapter-07-web/page-15.jpg">
-  <img class="manga-page" src="chapter-07-web/page-16.jpg">
-  <img class="manga-page" src="chapter-07-web/page-17.jpg">
-  <img class="manga-page" src="chapter-07-web/page-18.jpg">
+<div id="manga-pages"></div>
 
   <div class="review-box">
 
