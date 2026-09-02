@@ -132,10 +132,10 @@ for (let i = 1; i <= pageCount; i++) {
 }
   
   <div class="chapter-nav">
-    <span>← Previous Chapter</span>
-    <span>Chapter 7</span>
-    <span>Next Chapter →</span>
-  </div>
+  <a id="prev-chapter" href="#">← Previous Chapter</a>
+  <span id="current-chapter">Chapter 7</span>
+  <a id="next-chapter" href="#">Next Chapter →</a>
+</div>
 </div>
 
 <div id="manga-pages"></div>
@@ -226,6 +226,21 @@ for (let i = 1; i <= pageCount; i++) {
 <script>
   const params = new URLSearchParams(window.location.search);
 const chapterNumber = params.get("chapter") || "7";
+  const chapterNum = parseInt(chapterNumber);
+
+document.getElementById("current-chapter").textContent =
+  "Chapter " + chapterNumber;
+
+const prevLink = document.getElementById("prev-chapter");
+const nextLink = document.getElementById("next-chapter");
+
+if (chapterNum > 7) {
+  prevLink.href = "reader.html?chapter=" + (chapterNum - 1);
+} else {
+  prevLink.style.visibility = "hidden";
+}
+
+nextLink.href = "reader.html?chapter=" + (chapterNum + 1);
   const chapterTitles = {
   "7": "Gathering Storm",
   "8": "Beneath the Crown"
