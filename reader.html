@@ -189,7 +189,15 @@ button {
     SUPABASE_URL,
     SUPABASE_KEY
   );
-  const { error } = await supabaseClient
+
+  async function submitReview() {
+    const story = parseInt(document.getElementById("story").value);
+    const art = parseInt(document.getElementById("art").value);
+    const characters = parseInt(document.getElementById("characters").value);
+    const worldbuilding = parseInt(document.getElementById("worldbuilding").value);
+    const feedback = document.getElementById("feedback").value;
+
+    const { error } = await supabaseClient
       .from("reviews")
       .insert([
         {
@@ -210,5 +218,8 @@ button {
     }
   }
 </script>
+
+</body>
+</html>
 </body>
 </html>
