@@ -211,9 +211,9 @@ button {
       ]);
 
     if (error) {
-      alert("Something went wrong. Please try again.");
-      console.error(error);
-    } else {
+  alert("Error: " + error.message);
+  console.error(error);
+} else {
       alert("Thank you! Your review was submitted.");
     }
   }
