@@ -200,15 +200,7 @@ button {
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-  const SUPABASE_URL = "https://zvojiadkpesvrqufhktj.supabase.co";
-  const SUPABASE_KEY = "sb_publishable_tB2lW-I3JYw4rVUArQSU_Q_q9o3sjAX";
-
-  const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-  function setRating(name, value) {
+  window.setRating = function(name, value) {
   document.getElementById(name).value = value;
 
   const container = document.querySelector(
@@ -224,7 +216,17 @@ button {
       button.classList.remove("active");
     }
   });
-}
+};
+  
+  const SUPABASE_URL = "https://zvojiadkpesvrqufhktj.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_tB2lW-I3JYw4rVUArQSU_Q_q9o3sjAX";
+
+  const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+ 
   async function submitReview() {
     const story = parseInt(document.getElementById("story").value);
     const art = parseInt(document.getElementById("art").value);
