@@ -75,5 +75,26 @@
   <a class="button" href="characters.html">Characters</a>
   <a class="button" href="world.html">World</a>
   <a class="button" href="powers.html">Powers</a>
+onst chapterList = document.getElementById("chapter-list");
+
+  Object.keys(chapters)
+    .map(Number)
+    .sort((a, b) => a - b)
+    .forEach(chapterNumber => {
+
+      const chapter = chapters[chapterNumber];
+
+      const link = document.createElement("a");
+      link.className = "chapter-card";
+      link.href = "reader.html?chapter=" + chapterNumber;
+
+      link.innerHTML =
+        "<strong>Chapter " + chapterNumber + "</strong>" +
+        "<span>" + chapter.title + "</span>";
+
+      chapterList.appendChild(link);
+    });
+</script>
+  
 </body>
 </html>
