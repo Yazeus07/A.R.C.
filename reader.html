@@ -198,7 +198,7 @@ button {
     const feedback = document.getElementById("feedback").value;
 
     const { error } = await supabaseClient
-      .from("reviews")
+      .from("Reviews")
       .insert([
         {
           chapter: "7",
