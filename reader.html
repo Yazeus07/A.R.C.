@@ -212,7 +212,7 @@ button {
   <p id="review-count">No reviews yet</p>
 </div>  
       
-  <button onclick="submitReview()">Submit Review</button>
+  <button id="submit-review-button" onclick="submitReview()">Submit Review</button>
 
 </div>
 
@@ -220,6 +220,8 @@ button {
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+  const params = new URLSearchParams(window.location.search);
+const chapterNumber = params.get("chapter") || "7";
   window.setRating = function(name, value) {
   document.getElementById(name).value = value;
 
@@ -250,7 +252,7 @@ button {
   const { data, error } = await supabaseClient
     .from("Reviews")
     .select("story, art, characters, worldbuilding")
-    .eq("chapter", "7");
+    .eq("chapter", chapterNumber);
 
   if (error) {
     console.error(error);
@@ -295,7 +297,7 @@ button {
       .from("Reviews")
       .insert([
         {
-          chapter: "7",
+          chapter: chapterNumber,
           story: story,
           art: art,
           characters: characters,
@@ -309,11 +311,16 @@ button {
   console.error(error);
 } else {
       alert("Thank you! Your review was submitted.");
+      localStorage.setItem("reviewed-chapter-" + chapterNumber, "yes");
+      document.getElementById("submit-review-button").style.display = "none";
       document.getElementById("reader-ratings").style.display = "block";
       loadRatings();
     }
   }
-
+if (localStorage.getItem("reviewed-chapter-" + chapterNumber) === "yes") {
+  document.getElementById("submit-review-button").style.display = "none";
+  document.getElementById("reader-ratings").style.display = "block";
+}
   loadRatings();
   
 </script>
