@@ -188,7 +188,8 @@ button {
   const supabaseClient = supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
-  );const { error } = await supabaseClient
+  );
+  const { error } = await supabaseClient
       .from("reviews")
       .insert([
         {
