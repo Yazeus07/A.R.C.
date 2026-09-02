@@ -246,7 +246,44 @@ button {
     SUPABASE_KEY
   );
 
- 
+ async function loadRatings() {
+  const { data, error } = await supabaseClient
+    .from("Reviews")
+    .select("story, art, characters, worldbuilding")
+    .eq("chapter", "7");
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    return;
+  }
+
+  const total = data.length;
+
+  const avgStory =
+    data.reduce((sum, review) => sum + review.story, 0) / total;
+
+  const avgArt =
+    data.reduce((sum, review) => sum + review.art, 0) / total;
+
+  const avgCharacters =
+    data.reduce((sum, review) => sum + review.characters, 0) / total;
+
+  const avgWorldbuilding =
+    data.reduce((sum, review) => sum + review.worldbuilding, 0) / total;
+
+  document.getElementById("avg-story").textContent = avgStory.toFixed(1);
+  document.getElementById("avg-art").textContent = avgArt.toFixed(1);
+  document.getElementById("avg-characters").textContent = avgCharacters.toFixed(1);
+  document.getElementById("avg-worldbuilding").textContent = avgWorldbuilding.toFixed(1);
+
+  document.getElementById("review-count").textContent =
+    total + (total === 1 ? " review" : " reviews");
+}
+  
   async function submitReview() {
     const story = parseInt(document.getElementById("story").value);
     const art = parseInt(document.getElementById("art").value);
@@ -274,6 +311,9 @@ button {
       alert("Thank you! Your review was submitted.");
     }
   }
+
+  loadRatings();
+  
 </script>
 
 
